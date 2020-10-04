@@ -1,0 +1,8 @@
+# Vars for all environments (local, test, prod)
+# Keep these in sync with aws/cloudformation/sam-template.yml::Environment.Variables
+APP_STAGE=local
+
+# Vars for run/local-dev-server
+AWS_REGION=eu-central-1
+AWS_PROFILE=sandbox-joheiss
+LISTEN_PORT=8080
