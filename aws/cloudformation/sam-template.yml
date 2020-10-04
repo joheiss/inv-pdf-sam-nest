@@ -23,8 +23,8 @@ Resources:
   CreatePdfFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: src/create-pdf/
-      Handler: api.handler
+      CodeUri: ./
+      Handler: ./src/api.handler
       Policies:
         - AmazonS3FullAccess
         - AWSLambdaBasicExecutionRole
@@ -32,7 +32,7 @@ Resources:
         CreatePdf:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /create-pdf/{id}
+            Path: /create-pdf
             Method: post
             RestApiId:
               Ref: CreatePdfApi
