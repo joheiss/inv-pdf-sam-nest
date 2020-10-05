@@ -21,6 +21,7 @@ export async function bootstrap(): Promise<NestApp> {
       logger: 'local' == process.env['APP_STAGE'] ? new Logger() : console,
     },
   );
+  app.enableCors();
 
   app.setGlobalPrefix('v1');
   app.useGlobalPipes(new ValidationPipe());

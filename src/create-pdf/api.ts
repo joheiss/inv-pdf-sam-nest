@@ -16,5 +16,13 @@ export const handler = async (
     if (!cachedNestApp) {
         cachedNestApp = await bootstrap();
     }
-    return await proxy(cachedNestApp.instance, event, context, binaryMimeTypes);
+    const response = await proxy(cachedNestApp.instance, event, context, binaryMimeTypes);
+    response.headers = {
+      ...response.headers,
+      'Access-Control-Allow-Headers' : 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+      'Content-Type': 'application/json'
+    };
+    return response;
 };
